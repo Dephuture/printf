@@ -1,9 +1,11 @@
 #include "main.h"
+
 /**
  * _printf - functiion to clone the standard printf_function
  * @format: takes a variadic input
  * Return: return (-1) for failure
  */
+
 int _printf(const char *format, ...)
 {
 	int printchar = 0;
@@ -14,7 +16,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	}
 	va_start(arg_list, format);
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format != '%')
 		{
@@ -24,10 +26,6 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == '\0')
-			{
-				break;
-			}
 			switch (*format)
 			{
 				case 'c':
