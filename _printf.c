@@ -10,6 +10,8 @@ int _printf(const char *format, ...)
 {
 	int printchar = 0;
 	va_list arg_list;
+	char buffer[BUFFER_SIZE];
+
 
 	if (format == NULL)
 	{
@@ -23,7 +25,7 @@ int _printf(const char *format, ...)
 			write(1, format, 1);
 			printchar++;
 		}
-		else
+		else if (*format == '%')
 		{
 			format++;
 			switch (*format)
@@ -54,7 +56,22 @@ int _printf(const char *format, ...)
 					printchar += strlen;
 					break;
 				}
+				case 'd':
+					int num = va_arg(arg_list, int);
+					snprintf(buffer, BUFFER_SIZE, "%d", num);
+					fputs(buffer, stdout);
+					printchar += strlen(buffer);
+				case 'i':
+					int num = va_arg(arg_list, int);
+					snprintf(buffer, BUFFER_SIZE, "%d", num);
+					fputs(buffer, stdout);
+					printchar += strlen(buffer);
 			}
+
+		}
+		else {
+			putchar(*format);
+			printchar++;
 		}
 		format++;
 	}
