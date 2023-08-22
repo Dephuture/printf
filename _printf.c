@@ -48,6 +48,7 @@ int _printf(const char *format, ...){
 				break;
 				}
 				case 'd':
+					int number = va_arg(arg_list, int);
 			}
 		}
 		format++;
