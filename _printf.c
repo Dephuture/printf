@@ -47,6 +47,7 @@ int _printf(const char *format, ...){
 
 				break;
 				}
+				case 'd':
 			}
 		}
 		format++;
