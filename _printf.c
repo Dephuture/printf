@@ -62,10 +62,32 @@ int _printf(const char *format, ...)
 					fputs(buffer, stdout);
 					printchar += strlen(buffer);
 				case 'i':
-					int num = va_arg(arg_list, int);
-					snprintf(buffer, BUFFER_SIZE, "%d", num);
-					fputs(buffer, stdout);
-					printchar += strlen(buffer);
+						int num = va_arg(arg_list, int);
+						int len = 0;
+						if (num == 0) {
+							buffer[len++] = '0';
+						} else {
+							if (num < 0) {
+								putchar('-');
+								printchar++;
+								num = -num;
+							}
+							int temp = num;
+							while (temp > 0) {
+								temp /= 10;
+								len++;
+							}
+							temp = num;
+							for (int i = len - 1; i >= 0; i--) {
+								buffer[i] = '0' + (temp % 10);
+								temp /= 10;
+							}
+						}
+						for (int i = 0; i < len; i++) {
+							putchar(buffer[i]);
+							printchar++;
+						}
+						break;
 			}
 
 		}
