@@ -54,10 +54,4 @@ int _printf(const char *format, ...){
 	va_end(arg_list);
 	return printchar;
 }
-int main(){
-	_printf("Everybody Hates Chris\n");
-	_printf("%c\n", 'j');
-	_printf("%s\n", "Mike");
-	_printf("%%\n");
-	return 0;
-}
+
