@@ -57,10 +57,6 @@ int _printf(const char *format, ...)
 					break;
 				}
 				case 'd':
-					int num = va_arg(arg_list, int);
-					snprintf(buffer, BUFFER_SIZE, "%d", num);
-					fputs(buffer, stdout);
-					printchar += strlen(buffer);
 				case 'i':
 						int num = va_arg(arg_list, int);
 						int len = 0;
